@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-# main contains the main execution
-# for running my Balanced Binary
-# Search Tree project.
+# TestNode contains the tests
+# to check the Node class and
+# Comparable mixin were correctly
+# defined in this balanced BST project.
 #
 require_relative '../lib/node'
 
