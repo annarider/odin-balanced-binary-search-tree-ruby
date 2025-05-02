@@ -23,9 +23,17 @@ module TestTree
     tree.insert(5)
     tree.pretty_print
   end
+
+  def self.delete
+    tree.delete(45)
+    tree.delete(145)
+    tree.delete(5)
+    tree.pretty_print
+  end
 end
 
 if __FILE__ == $PROGRAM_NAME
   TestTree.setup
   TestTree.insert
+  TestTree.delete
 end
