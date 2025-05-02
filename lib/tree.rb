@@ -35,6 +35,7 @@ class Tree
   end
 
   def insert(key, node = @root)
+    # handle 2 base cases
     return Node.new(key) if node.nil?
 
     return node if node.data == key
