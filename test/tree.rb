@@ -14,10 +14,18 @@ module TestTree
 
   def self.setup
     @tree = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
-    @tree.pretty_print
+    tree.pretty_print
+  end
+
+  def self.insert
+    tree.insert(45)
+    tree.insert(145)
+    tree.insert(5)
+    tree.pretty_print
   end
 end
 
 if __FILE__ == $PROGRAM_NAME
-  p TestTree.setup
+  TestTree.setup
+  TestTree.insert
 end
