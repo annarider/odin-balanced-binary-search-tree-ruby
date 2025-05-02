@@ -28,6 +28,9 @@ module TestTree
     tree.delete(45)
     tree.delete(145)
     tree.delete(5)
+    tree.delete(4)
+    tree.delete(8)
+    tree.delete(67)
     tree.pretty_print
   end
 end

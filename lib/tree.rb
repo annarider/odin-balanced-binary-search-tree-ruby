@@ -48,9 +48,43 @@ class Tree
     node
   end
 
+  def delete(key, node = @root)
+    return nil if node.nil? # handle base case
+
+    # traverse down subtrees to find key in a leaf node
+    if node.data > key
+      node.left = delete(key, node.left) # search left subtree
+    elsif node.data < key
+      node.right = delete(key, node.right) # search right subtree
+    else
+      # Found node with key, logic to delete covers 3 cases
+      # node to delete is leaf node or only has right child
+      return node.right if node.left.nil?
+
+      # node only has a left child
+      return node.left if node.right.nil?
+      
+      # when node to delete has left and right children
+      replacement = successor(node)
+      node.data = replacement.data
+      node.right = delete(replacement.data, node.right)
+    end
+    node
+  end
+
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
     pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left
   end 
+
+  private
+
+  def successor(node)
+    current = node.right
+    until current.nil? || current.left.nil?
+      current = current.left
+    end
+    current
+  end
 end
