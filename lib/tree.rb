@@ -82,6 +82,8 @@ class Tree
   end
 
   def level_order
+    return nil if root.nil?
+
     queue = [root]
     data = []
     until queue.empty?
@@ -95,8 +97,8 @@ class Tree
   end
 
   def level_order_r
-    
   end
+
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
