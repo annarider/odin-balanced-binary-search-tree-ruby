@@ -41,10 +41,10 @@ module TestTree
   end
 
   def self.level_order
-    p tree.level_order
-    p tree.level_order { |node| puts node.data }
+    # p tree.level_order
+    # p tree.level_order { |node| puts node.data }
     p tree.level_order_r
-    p tree.level_order_r { |node| puts node.data }
+    tree.level_order_r { |node| puts node.data }
   end
 end
 
