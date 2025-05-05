@@ -46,6 +46,11 @@ module TestTree
     p tree.level_order_r
     tree.level_order_r { |node| puts node.data }
   end
+
+  def self.traverse
+    p tree.traverse
+    tree.traverse { |node| puts node.data }
+  end
 end
 
 if __FILE__ == $PROGRAM_NAME
@@ -53,5 +58,6 @@ if __FILE__ == $PROGRAM_NAME
   TestTree.insert
   # TestTree.delete
   # TestTree.find
-  TestTree.level_order
+  # TestTree.level_order
+  TestTree.traverse
 end
