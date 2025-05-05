@@ -77,10 +77,26 @@ class Tree
     return node if root.nil? || node.data == key
     
     return find(key, node.left) if node.data > key
-    
+
     return find(key, node.right) if node.data < key
   end
 
+  def level_order
+    queue = [root]
+    data = []
+    until queue.empty?
+      current = queue.shift
+      data << current.data 
+      yield current if block_given?
+      queue.push(current.left) unless current.left.nil?
+      queue.push(current.right) unless current.right.nil?
+    end
+    data unless block_given?
+  end
+
+  def level_order_r
+    
+  end
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
