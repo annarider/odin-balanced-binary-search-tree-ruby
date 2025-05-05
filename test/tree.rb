@@ -39,11 +39,19 @@ module TestTree
     p tree.find(8)
     p tree.find(145)
   end
+
+  def self.level_order
+    p tree.level_order
+    p tree.level_order { |node| puts node if node.data == 5 }
+    p tree.level_order_r
+    p tree.level_order_r { |node| puts node if node.data == 5 }
+  end
 end
 
 if __FILE__ == $PROGRAM_NAME
   TestTree.setup
   TestTree.insert
   # TestTree.delete
-  TestTree.find
+  # TestTree.find
+  TestTree.level_order
 end
