@@ -33,10 +33,17 @@ module TestTree
     tree.delete(67)
     tree.pretty_print
   end
+
+  def self.find
+    p tree.find(5)
+    p tree.find(8)
+    p tree.find(145)
+  end
 end
 
 if __FILE__ == $PROGRAM_NAME
   TestTree.setup
   TestTree.insert
-  TestTree.delete
+  # TestTree.delete
+  TestTree.find
 end
