@@ -52,6 +52,8 @@ module TestTree
     tree.inorder { |node| puts node.data }
     p tree.preorder
     tree.preorder { |node| puts node.data }
+    p tree.postorder
+    tree.postorder { |node| puts node.data }
   end
 end
 
