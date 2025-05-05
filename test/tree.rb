@@ -48,8 +48,8 @@ module TestTree
   end
 
   def self.traverse
-    p tree.traverse
-    tree.traverse { |node| puts node.data }
+    p tree.inorder
+    tree.inorder { |node| puts node.data }
   end
 end
 
