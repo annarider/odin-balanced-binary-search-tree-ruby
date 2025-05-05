@@ -95,8 +95,19 @@ class Tree
     end
     data unless block_given?
   end
+  
+  def level_order_r(queue = [@root], data = [], &block)
+    # base case
+    return data if queue.empty?
+    
+    current = queue.shift
+    data << current.data
+    yield current if block_given?
+    queue << current.left unless current.left.nil?
+    queue << current.right unless current.right.nil?
+    level_order_r(queue, data, &block)
 
-  def level_order_r
+    block_given? ? nil : data
   end
 
   def pretty_print(node = @root, prefix = '', is_left = true)
