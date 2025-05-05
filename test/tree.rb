@@ -50,6 +50,8 @@ module TestTree
   def self.traverse
     p tree.inorder
     tree.inorder { |node| puts node.data }
+    p tree.preorder
+    tree.preorder { |node| puts node.data }
   end
 end
 

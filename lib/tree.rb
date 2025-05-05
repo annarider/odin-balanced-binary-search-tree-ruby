@@ -122,6 +122,18 @@ class Tree
     block_given? ? nil : data
   end
 
+  def preorder(node = @root, data = [], &block)
+    return node if root.nil?
+
+    current = node
+    yield current if block_given?
+    data << current.data
+    preorder(current.left, data, &block) unless current.left.nil?
+    preorder(current.right, data, &block) unless current.right.nil?
+
+    block_given? ? nil : data
+  end
+
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
