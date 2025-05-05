@@ -23,9 +23,15 @@ module TestNode
     p node2 == node3
     p node2 > node3    
   end
+
+  def self.next_nil?
+    p node1.left.nil?
+    p node1.left
+  end
 end
 
 if __FILE__ == $PROGRAM_NAME
   TestNode.setup
-  TestNode.compare
+  # TestNode.compare
+  TestNode.next_nil?
 end
