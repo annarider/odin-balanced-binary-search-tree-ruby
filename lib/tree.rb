@@ -134,6 +134,18 @@ class Tree
     block_given? ? nil : data
   end
 
+  def postorder(node = @root, data = [], &block)
+    return node if root.nil?
+
+    current = node
+    postorder(current.left, data, &block) unless current.left.nil?
+    postorder(current.right, data, &block) unless current.right.nil?
+    yield current if block_given?
+    data << current.data
+
+    block_given? ? nil : data
+  end
+
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
