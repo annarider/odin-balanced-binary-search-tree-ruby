@@ -149,20 +149,32 @@ class Tree
 
   def height(key = @root.data, node = @root)
     current = find(key)
-    # base case
     return nil if current.nil?
-
+    
     calculate_height(current)
   end
+  
+  def depth(key)
+    return nil if find(key).nil?
+    
+    queue = [[root, 0]]
+    until queue.empty?
+      current = queue.shift
+      return current[1] if current[0].data == key
 
+      queue.push([current[0].left, current[1] + 1]) unless current[0].left.nil?
+      queue.push([current[0].right, current[1] + 1]) unless current[0].right.nil?
+    end
+  end
+  
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
     pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left
   end 
-
+  
   private
-
+  
   def successor(node)
     current = node.right
     until current.nil? || current.left.nil?
@@ -170,8 +182,9 @@ class Tree
     end
     current
   end
-
+  
   def calculate_height(node)
+    # base cases
     return -1 if node.nil?
 
     return 0 if node.left.nil? && node.right.nil?

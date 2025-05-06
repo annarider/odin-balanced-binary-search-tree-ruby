@@ -66,11 +66,11 @@ module TestTree
   end
 
   def self.depth
-    p tree.depth
-    p tree.depth(45)
-    p tree.depth(133)
-    p tree.depth(9)
-    p tree.depth(67)
+    p tree.depth(8) # 0
+    p tree.depth(45) # 4
+    p tree.depth(133) # nil
+    p tree.depth(9) # 2
+    p tree.depth(67) # 1
   end
 end
 
