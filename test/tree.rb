@@ -64,6 +64,14 @@ module TestTree
     p tree.height(9)
     p tree.height(67)
   end
+
+  def self.depth
+    p tree.depth
+    p tree.depth(45)
+    p tree.depth(133)
+    p tree.depth(9)
+    p tree.depth(67)
+  end
 end
 
 if __FILE__ == $PROGRAM_NAME
@@ -73,5 +81,6 @@ if __FILE__ == $PROGRAM_NAME
   # TestTree.find
   # TestTree.level_order
   # TestTree.traverse
-  TestTree.height
+  # TestTree.height
+  TestTree.depth
 end
