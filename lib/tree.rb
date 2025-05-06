@@ -173,6 +173,10 @@ class Tree
     pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left
   end 
   
+  def balanced?(node = @root)
+    calculate_balance(node) != -1 
+  end
+
   private
   
   def successor(node)
@@ -190,5 +194,20 @@ class Tree
     return 0 if node.left.nil? && node.right.nil?
 
     return 1 + [calculate_height(node.left), calculate_height(node.right)].max
+  end
+
+  def calculate_balance(node)
+    # base cases
+    return 0 if node.nil? # 0 height of empty tree is balanced
+
+    left_height = calculate_balance(node.left)
+    return -1 if left_height == -1
+
+    right_height = calculate_balance(node.right)
+    return -1 if right_height == -1
+    
+    return -1 if (left_height - right_height).abs > 1
+
+    return 1 + [left_height, right_height].max
   end
 end
