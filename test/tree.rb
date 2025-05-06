@@ -76,6 +76,10 @@ module TestTree
   def self.balanced?
     tree.balanced?
   end
+
+  def self.rebalance
+    tree.rebalance
+  end
 end
 
 if __FILE__ == $PROGRAM_NAME
@@ -89,4 +93,5 @@ if __FILE__ == $PROGRAM_NAME
   # TestTree.traverse
   # TestTree.height
   # TestTree.depth
+  TestTree.rebalance
 end
