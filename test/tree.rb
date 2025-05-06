@@ -38,6 +38,7 @@ module TestTree
     p tree.find(5)
     p tree.find(8)
     p tree.find(145)
+    p tree.find(133)
   end
 
   def self.level_order
@@ -67,8 +68,8 @@ if __FILE__ == $PROGRAM_NAME
   TestTree.setup
   TestTree.insert
   # TestTree.delete
-  # TestTree.find
+  TestTree.find
   # TestTree.level_order
   # TestTree.traverse
-  TestTree.height
+  # TestTree.height
 end

@@ -74,11 +74,13 @@ class Tree
 
   def find(key, node = @root)
     # base case
-    return node if root.nil? || node.data == key
+    return node if node.nil? || node.data == key
     
     return find(key, node.left) if node.data > key
 
     return find(key, node.right) if node.data < key
+      
+    nil
   end
 
   def level_order
@@ -142,8 +144,15 @@ class Tree
     postorder(current.right, data, &block) unless current.right.nil?
     yield current if block_given?
     data << current.data
-
     block_given? ? nil : data
+  end
+
+  def height(key, node = @root)
+    current = find(key)
+    return nil if current.nil?
+    # base case
+    return 0 if node.nil? || node.data == key
+
   end
 
   def pretty_print(node = @root, prefix = '', is_left = true)
