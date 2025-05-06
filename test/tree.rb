@@ -61,6 +61,8 @@ module TestTree
     p tree.height
     p tree.height(45)
     p tree.height(133)
+    p tree.height(9)
+    p tree.height(67)
   end
 end
 
@@ -68,8 +70,8 @@ if __FILE__ == $PROGRAM_NAME
   TestTree.setup
   TestTree.insert
   # TestTree.delete
-  TestTree.find
+  # TestTree.find
   # TestTree.level_order
   # TestTree.traverse
-  # TestTree.height
+  TestTree.height
 end

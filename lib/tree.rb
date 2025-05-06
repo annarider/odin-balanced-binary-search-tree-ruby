@@ -147,12 +147,12 @@ class Tree
     block_given? ? nil : data
   end
 
-  def height(key, node = @root)
+  def height(key = @root.data, node = @root)
     current = find(key)
-    return nil if current.nil?
     # base case
-    return 0 if node.nil? || node.data == key
+    return nil if current.nil?
 
+    calculate_height(current)
   end
 
   def pretty_print(node = @root, prefix = '', is_left = true)
@@ -169,5 +169,13 @@ class Tree
       current = current.left
     end
     current
+  end
+
+  def calculate_height(node)
+    return -1 if node.nil?
+
+    return 0 if node.left.nil? && node.right.nil?
+
+    return 1 + [calculate_height(node.left), calculate_height(node.right)].max
   end
 end
