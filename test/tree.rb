@@ -55,6 +55,12 @@ module TestTree
     p tree.postorder
     tree.postorder { |node| puts node.data }
   end
+
+  def self.height
+    p tree.height
+    p tree.height(45)
+    p tree.height(133)
+  end
 end
 
 if __FILE__ == $PROGRAM_NAME
@@ -63,5 +69,6 @@ if __FILE__ == $PROGRAM_NAME
   # TestTree.delete
   # TestTree.find
   # TestTree.level_order
-  TestTree.traverse
+  # TestTree.traverse
+  TestTree.height
 end
