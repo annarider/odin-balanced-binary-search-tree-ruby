@@ -72,15 +72,21 @@ module TestTree
     p tree.depth(9) # 2
     p tree.depth(67) # 1
   end
+
+  def self.balanced?
+    tree.balanced?
+  end
 end
 
 if __FILE__ == $PROGRAM_NAME
   TestTree.setup
+  puts "Before insert, balance? #{TestTree.balanced?}"
   TestTree.insert
+  puts "After insert, balance? #{TestTree.balanced?}"
   # TestTree.delete
   # TestTree.find
   # TestTree.level_order
   # TestTree.traverse
   # TestTree.height
-  TestTree.depth
+  # TestTree.depth
 end
