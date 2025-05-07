@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # TestTree tests the Tree class
-# is correctly defined in my 
+# is correctly defined in my
 # Balanced Binary
 # Search Tree project.
 #

@@ -21,7 +21,7 @@ module TestNode
   def self.compare
     p node1 == node2
     p node2 == node3
-    p node2 > node3    
+    p node2 > node3
   end
 
   def self.next_nil?

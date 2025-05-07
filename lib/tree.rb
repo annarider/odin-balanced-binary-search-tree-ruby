@@ -7,7 +7,7 @@ require_relative 'node'
 # methods to manipulate data,
 # such as searching, inserting,
 # and deleting.
-# 
+#
 # It relies on the Node
 # class to create nodes in
 # the tree.
@@ -63,7 +63,7 @@ class Tree
 
       # node only has a left child
       return node.left if node.right.nil?
-      
+
       # when node to delete has left and right children
       replacement = successor(node)
       node.data = replacement.data
@@ -75,11 +75,11 @@ class Tree
   def find(key, node = @root)
     # base case
     return node if node.nil? || node.data == key
-    
+
     return find(key, node.left) if node.data > key
 
     return find(key, node.right) if node.data < key
-      
+
     nil
   end
 
@@ -90,18 +90,18 @@ class Tree
     data = []
     until queue.empty?
       current = queue.shift
-      data << current.data 
+      data << current.data
       yield current if block_given?
       queue.push(current.left) unless current.left.nil?
       queue.push(current.right) unless current.right.nil?
     end
     data unless block_given?
   end
-  
+
   def level_order_r(queue = [@root], data = [], &block)
     # base case
     return data if queue.empty?
-    
+
     current = queue.shift
     data << current.data
     yield current if block_given?
@@ -147,16 +147,16 @@ class Tree
     block_given? ? nil : data
   end
 
-  def height(key = @root.data, node = @root)
+  def height(key = @root.data)
     current = find(key)
     return nil if current.nil?
-    
+
     calculate_height(current)
   end
-  
+
   def depth(key)
     return nil if find(key).nil?
-    
+
     queue = [[root, 0]]
     until queue.empty?
       current = queue.shift
@@ -166,42 +166,40 @@ class Tree
       queue.push([current[0].right, current[1] + 1]) unless current[0].right.nil?
     end
   end
-  
+
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
     pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left
-  end 
-  
+  end
+
   def balanced?(node = @root)
-    calculate_balance(node) != -1 
+    calculate_balance(node) != -1
   end
 
   def rebalance
     return self if balanced?
-    
+
     sorted_data = inorder
     @root = build_tree(sorted_data)
     self
   end
 
   private
-  
+
   def successor(node)
     current = node.right
-    until current.nil? || current.left.nil?
-      current = current.left
-    end
+    current = current.left until current.nil? || current.left.nil?
     current
   end
-  
+
   def calculate_height(node)
     # base cases
     return -1 if node.nil?
 
     return 0 if node.left.nil? && node.right.nil?
 
-    return 1 + [calculate_height(node.left), calculate_height(node.right)].max
+    1 + [calculate_height(node.left), calculate_height(node.right)].max
   end
 
   def calculate_balance(node)
@@ -213,9 +211,9 @@ class Tree
 
     right_height = calculate_balance(node.right)
     return -1 if right_height == -1
-    
+
     return -1 if (left_height - right_height).abs > 1
 
-    return 1 + [left_height, right_height].max
+    1 + [left_height, right_height].max
   end
 end
