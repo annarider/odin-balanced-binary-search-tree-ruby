@@ -78,13 +78,16 @@ module TestTree
   end
 
   def self.rebalance
-    tree.rebalance
+    @tree = tree.rebalance
+    tree.pretty_print
+    p "balanced? #{tree.balanced?}"
   end
 end
 
 if __FILE__ == $PROGRAM_NAME
   TestTree.setup
   puts "Before insert, balance? #{TestTree.balanced?}"
+  TestTree.rebalance
   TestTree.insert
   puts "After insert, balance? #{TestTree.balanced?}"
   # TestTree.delete
