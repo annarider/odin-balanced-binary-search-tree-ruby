@@ -177,6 +177,14 @@ class Tree
     calculate_balance(node) != -1 
   end
 
+  def rebalance
+    return self if balanced?
+    
+    sorted_data = inorder
+    @root = build_tree(sorted_data)
+    self
+  end
+
   private
   
   def successor(node)
